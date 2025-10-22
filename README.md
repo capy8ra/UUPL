@@ -18,10 +18,13 @@ We provide code for the implmentation of our method and all three other baseline
 
 ## BibTex
 ```
-@article{peng2025towards,
-  title={Towards Uncertainty Unification: A Case Study for Preference Learning},
-  author={Peng, Shaoting and Chen, Haonan and Driggs-Campbell, Katherine},
-  journal={arXiv preprint arXiv:2503.19317},
-  year={2025}
+@INPROCEEDINGS{PengS-RSS-25, 
+    AUTHOR    = {Shaoting Peng AND Haonan Chen AND Katherine Rose Driggs-Campbell}, 
+    TITLE     = {Towards Uncertainty Unification: A Case Study for Preference Learning}, 
+    BOOKTITLE = {Proceedings of Robotics: Science and Systems}, 
+    YEAR      = {2025}, 
+    ADDRESS   = {LosAngeles, CA, USA}, 
+    MONTH     = {June}, 
+    DOI       = {10.15607/RSS.2025.XXI.091} 
 }
 ```
