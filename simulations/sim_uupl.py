@@ -3,12 +3,11 @@ import numpy as np
 import scipy.optimize as opt
 import matplotlib.pyplot as plt
 from scipy.stats import multivariate_normal
-from util import *
+from uupl.utils import *
 import seaborn as sns
 from tqdm import tqdm
-import sys
 import time
-from GP_ours import GaussianProcess
+from uupl.gp_uupl import GaussianProcess
 
 
 # Define GMM parameters as global constants
@@ -45,18 +44,24 @@ def findBestQuery(gp: GaussianProcess) -> Tuple[np.ndarray, float]:
     return opt_res[0], -opt_res[1]
 
 
-def get_metrics(pos: np.ndarray, gmm_pdf: np.ndarray, gp: GaussianProcess) -> None:
-    """Compute and print correlation metrics.
-    
+def get_metrics(pos: np.ndarray, gmm_pdf: np.ndarray, gp: GaussianProcess,
+                corr_list: list) -> float:
+    """Compute and print correlation between true GMM and GP predictions.
+
     Args:
         pos: Position array
         gmm_pdf: GMM probability density values
         gp: Gaussian Process model
+        corr_list: List to append the computed correlation to
+
+    Returns:
+        float: Pearson correlation coefficient
     """
     y_pred = gp.mean1pt(pos.reshape(-1, 2), eval=True)
     corr = np.corrcoef(gmm_pdf.flatten(), y_pred)[0, 1]
     print(">>> corr:", corr)
     corr_list.append(corr)
+    return corr
 
 
 def create_gmm_surface() -> Tuple[np.ndarray, np.ndarray, np.ndarray]:

@@ -1,7 +1,7 @@
 from numpy.linalg import inv
 from scipy.optimize import minimize
 from scipy.stats import norm
-from util import *
+from uupl.utils import *
 
 
 class GaussianProcess:

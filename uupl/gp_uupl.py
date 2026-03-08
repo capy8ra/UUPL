@@ -3,7 +3,7 @@ import numpy as np
 from numpy.linalg import inv
 from scipy.optimize import minimize
 from scipy.stats import norm, multivariate_normal
-from util import *
+from uupl.utils import *
 
 
 class GaussianProcess:
@@ -291,12 +291,10 @@ class GaussianProcess:
         K = self.K
         post_cov = Kt - kt@inv(np.identity(2*n)+np.matmul(W,K))@W@np.transpose(kt)
         xaa, xbb = self.GMM(xa, xb)
-        post_cov[0][0] *= xaa
-        post_cov[0][0] *= xaa
+        post_cov[0][0] *= xaa ** 2
         post_cov[0][1] *= xaa
         post_cov[0][1] *= xbb
         post_cov[1][0] *= xaa
         post_cov[1][0] *= xbb
-        post_cov[1][1] *= xbb
-        post_cov[1][1] *= xbb
+        post_cov[1][1] *= xbb ** 2
         return post_cov
