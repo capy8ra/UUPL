@@ -52,7 +52,7 @@ UUPL extends GP-based preference learning with three components that unify human
 ## Installation
 
 ```bash
-git clone https://github.com/<your-org>/UUPL.git
+git clone https://github.com/capy8ra/UUPL.git
 cd UUPL
 pip install -r requirements.txt
 ```
